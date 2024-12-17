@@ -1,46 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
     <title>Услуги</title>
     <link href="style.css" rel="stylesheet"/>
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a class="menu__link" href="main.html">Главная</a></li>
-                <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-                <li><a class="menu__link" href="about.html">О нас</a></li>
-                <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-section">
-        <h2>Наши услуги</h2>
-        <p>Мы предлагаем консультации по уходу за экзотическими животными, а также разнообразные аксессуары и корма для питомцев.</p>
-
-        <section class="table-section" id="responsive-table">
-            <h2>Информация о товарах</h2>
-            <table class="responsive-table">
-                <thead>
-                    <tr>
-                        <th>Товар</th>
-                        <th>Цена</th>
-                        <th>Описание</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Верблюд</td><td>15000 $</td><td>Одногорбый краснокнижный верблюд.</td></tr>
-                    <tr><td>Шимпанзе</td><td>1000 $</td><td>Молодой шимпанзе, обученный различным трюкам.</td></tr>
-                    <tr><td>Верблюд</td><td>1500 $</td><td>Египетский двугорбый верблюд.</td></tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
-    </footer>
+<ul style="list-style-type: none; overflow: hidden;">
+    <li style="float: left;">
+        <img alt="Логотип магазина" src="pics/logo.png"
+             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
+    </li>
+    <li style="float: right;">
+        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
+            Два Холма
+        </h1>
+    </li>
+</ul>
+<hr/>
+<header>
+    <nav>
+        <ul>
+            <li><a class="menu__link" href="main.html">Главная</a></li>
+            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
+            <li><a class="menu__link" href="about.html">О нас</a></li>
+            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="main-section">
+    <h2>Наши услуги</h2>
+    <p>Мы предлагаем консультации по уходу за экзотическими животными, а также разнообразные аксессуары и корма для
+        питомцев.</p>
+    <section class="table-section" id="responsive-table">
+        <h2>Информация о товарах</h2>
+        <table class="responsive-table">
+            <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Описание</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Верблюд</td>
+                <td>15000 $</td>
+                <td>Одногорбый краснокнижный верблюд.</td>
+            </tr>
+            <tr>
+                <td>Шимпанзе</td>
+                <td>1000 $</td>
+                <td>Молодой шимпанзе, обученный различным трюкам.</td>
+            </tr>
+            <tr>
+                <td>Верблюд</td>
+                <td>1500 $</td>
+                <td>Египетский двугорбый верблюд.</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+    <p id="performance-display"></p>
+</footer>
 </body>
 </html>
