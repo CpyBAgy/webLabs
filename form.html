@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>Два Холма - магазин экзотических животных</title>
+    <link href="style.css" rel="stylesheet"/>
+    <script src="js%20scripts/main.js" defer></script>
+    <script src="js%20scripts/forms.js"></script>
+</head>
+<body>
+<ul style="list-style-type: none; overflow: hidden;">
+    <li style="float: left;">
+        <img alt="Логотип магазина" src="pics/logo.png"
+             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
+    </li>
+    <li style="float: right;">
+        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
+            Два Холма
+        </h1>
+    </li>
+</ul>
+<hr/>
+<header>
+    <nav>
+        <ul>
+            <li><a class="menu__link" href="main.html">Главная</a></li>
+            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html">Услуги</a></li>
+            <li><a class="menu__link" href="about.html">О нас</a></li>
+            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
+            <li><a class="menu__link" href="form.html">Форма</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section class="form-section">
+        <h1 style="text-align: center">Добавьте информацию о животном</h1>
+        <form id="animalForm" class="styled-form">
+            <label for="name">Имя животного:</label>
+            <input type="text" id="name" required>
+
+            <label for="type">Вид животного:</label>
+            <input type="text" id="type" required>
+
+            <label for="age">Возраст:</label>
+            <input type="number" id="age" required min="0">
+
+            <button type="submit" class="submit-button">Добавить</button>
+        </form>
+    </section>
+    <section class="table-section">
+        <h2>Список Животных</h2>
+        <div class="table-slider">
+            <div id="animalTable" class="grid-table">
+                <div class="header">Имя</div>
+                <div class="header">Вид</div>
+                <div class="header">Возраст</div>
+                <div class="header">Действия</div>
+            </div>
+        </div>
+
+        <template id="animal-row-template">
+            <div class="cell animal-name"></div>
+            <div class="cell animal-type"></div>
+            <div class="cell animal-age"></div>
+            <div class="cell">
+                <button class="edit-button">Изменить</button>
+                <button class="delete-button">Удалить</button>
+            </div>
+        </template>
+    </section>
+</main>
+</body>
+<footer>
+    <p>© 2024 Магазин "Два Холма". Все права защищены.</p>
+    <p id="performance-display"></p>
+</footer>
+</html>
