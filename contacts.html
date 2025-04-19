@@ -2,48 +2,319 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Контакты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<ul style="list-style-type: none; overflow: hidden;">
-    <li style="float: left;">
-        <img alt="Логотип магазина" src="pics/logo.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-    </li>
-    <li style="float: right;">
-        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
-            Два Холма
-        </h1>
-    </li>
-</ul>
-<hr/>
-<header>
-    <nav>
+<header class="site-header">
+    <div class="logo-container">
+        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <h1 class="site-title">Два Холма</h1>
+    </div>
+    <nav class="main-nav">
         <ul>
-            <li><a class="menu__link" href="index.html">Главная</a></li>
-            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-            <li><a class="menu__link" href="services.html">Услуги</a></li>
-            <li><a class="menu__link" href="about.html">О нас</a></li>
-            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            <li><a class="menu__link" href="form.html">Форма</a></li>
-            <li class="menu__item"><a class="menu__link" href="users.html">Животные</a></li>
+            <li><a class="menu__link" href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a class="menu__link" href="animals.html"><i class="fas fa-paw"></i> Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+            <li><a class="menu__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a class="menu__link" href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+            <li><a class="menu__link" href="form.html"><i class="fas fa-edit"></i> Добавить животное</a></li>
+            <li><a class="menu__link" href="users.html"><i class="fas fa-users"></i> Наши клиенты</a></li>
         </ul>
     </nav>
 </header>
-<main class="main-section">
+
+<div class="page-banner contacts-banner">
     <h2>Контакты</h2>
-    <p>Вы можете связаться с нами по телефону, по электронной почте или посетить наш магазин:</p>
-    <ul>
-        <li><strong>Телефон:</strong> 123-456-7890</li>
-        <li><strong>Email:</strong> <a href="mailto:info@dvaholma.com">info@dvaholma.com</a></li>
-        <li><strong>Адрес:</strong> ул. Экзотическая, 45, Москва</li>
-    </ul>
+    <p>Свяжитесь с нами любым удобным способом</p>
+</div>
+
+<main class="main-section">
+    <div class="contacts-container">
+        <section class="contact-info">
+            <h3><i class="fas fa-info-circle"></i> Информация</h3>
+            <p class="contact-intro">Вы можете связаться с нами по телефону, электронной почте или посетить наш магазин лично.</p>
+
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Адрес</h4>
+                        <p>ул. Экзотическая, 45, Москва</p>
+                        <p class="contact-note">Удобная парковка на территории</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Телефон</h4>
+                        <p><a href="tel:+71234567890">123-456-7890</a></p>
+                        <p class="contact-note">Пн-Пт: 9:00 - 20:00, Сб-Вс: 10:00 - 18:00</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@dvaholma.com">info@dvaholma.com</a></p>
+                        <p class="contact-note">Отвечаем в течение 24 часов</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Часы работы</h4>
+                        <p>Понедельник - Пятница: 9:00 - 20:00</p>
+                        <p>Суббота - Воскресенье: 10:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h4>Мы в социальных сетях</h4>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-btn"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            <h3><i class="fas fa-paper-plane"></i> Напишите нам</h3>
+            <p class="form-intro">Есть вопросы или предложения? Заполните форму ниже, и мы свяжемся с вами как можно скорее.</p>
+
+            <form id="contactForm" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Тема *</label>
+                        <select id="subject" required>
+                            <option value="" disabled selected>Выберите тему</option>
+                            <option value="question">Вопрос о животных</option>
+                            <option value="order">Заказ</option>
+                            <option value="service">Услуги</option>
+                            <option value="feedback">Отзыв</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group consent-group">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">Я согласен на обработку моих персональных данных</label>
+                </div>
+
+                <button type="submit" class="submit-button contact-submit">Отправить сообщение</button>
+            </form>
+        </section>
+    </div>
+
+    <section class="map-section">
+        <h3><i class="fas fa-map"></i> Как нас найти</h3>
+        <div class="map-container">
+            <!-- Здесь будет карта, но пока используем заглушку -->
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <p>Интерактивная карта</p>
+                <p class="map-address">ул. Экзотическая, 45, Москва</p>
+            </div>
+        </div>
+
+        <div class="directions">
+            <h4>Как добраться:</h4>
+            <div class="direction-items">
+                <div class="direction-item">
+                    <div class="direction-icon"><i class="fas fa-subway"></i></div>
+                    <div class="direction-text">
+                        <h5>На метро</h5>
+                        <p>Станция "Экзотическая", выход №2. 5 минут пешком.</p>
+                    </div>
+                </div>
+
+                <div class="direction-item">
+                    <div class="direction-icon"><i class="fas fa-bus"></i></div>
+                    <div class="direction-text">
+                        <h5>На автобусе</h5>
+                        <p>Автобусы №123, №456 до остановки "Зоопарк".</p>
+                    </div>
+                </div>
+
+                <div class="direction-item">
+                    <div class="direction-icon"><i class="fas fa-car"></i></div>
+                    <div class="direction-text">
+                        <h5>На автомобиле</h5>
+                        <p>Удобная парковка на территории магазина.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section contacts-faq">
+        <h3><i class="fas fa-question-circle"></i> Частые вопросы</h3>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Можно ли заказать животное с доставкой?</h4>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Да, мы предоставляем услугу доставки экзотических животных по Москве и Московской области. Доставка осуществляется в специальных контейнерах с поддержанием необходимого температурного режима. Для уточнения деталей доставки, пожалуйста, свяжитесь с нами по телефону.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Предоставляете ли вы документы на животных?</h4>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Все животные в нашем магазине сопровождаются необходимыми документами: ветеринарный паспорт, сертификат происхождения (при наличии) и рекомендации по содержанию. Для некоторых видов, занесенных в Красную книгу, оформляются дополнительные разрешительные документы.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Как записаться на консультацию к ветеринару?</h4>
+                    <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Записаться на консультацию к нашему ветеринару можно по телефону или через форму обратной связи на сайте. Укажите тему "Услуги" и в сообщении напишите, что вам требуется консультация ветеринара. Наш специалист свяжется с вами для согласования удобного времени.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
+
 <footer>
-    <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
-    <p id="performance-display"></p>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Магазин "Два Холма"</h3>
+            <p>Ваш проводник в мир экзотических животных</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ул. Экзотическая, 45, Москва</p>
+            <p><i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@dvaholma.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+        <p id="performance-display"></p>
+    </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Форма обратной связи
+        const contactForm = document.getElementById('contactForm');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Показываем уведомление об успешной отправке
+                const notification = document.createElement('div');
+                notification.className = 'notification success';
+                notification.innerHTML = '<i class="fas fa-check-circle"></i> Спасибо! Ваше сообщение успешно отправлено. Мы свяжемся с вами в ближайшее время.';
+
+                contactForm.reset();
+
+                // Вставляем уведомление перед формой
+                contactForm.parentNode.insertBefore(notification, contactForm);
+
+                // Прокручиваем к уведомлению
+                notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Убираем уведомление через 5 секунд
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 5000);
+            });
+        }
+
+        // Скрипт для FAQ аккордеона
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            const toggle = item.querySelector('.faq-toggle i');
+
+            question.addEventListener('click', () => {
+                // Закрываем все другие ответы
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-toggle i').className = 'fas fa-plus';
+                    }
+                });
+
+                // Открываем/закрываем текущий ответ
+                item.classList.toggle('active');
+
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    toggle.className = 'fas fa-minus';
+                } else {
+                    answer.style.maxHeight = null;
+                    toggle.className = 'fas fa-plus';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

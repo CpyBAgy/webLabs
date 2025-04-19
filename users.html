@@ -2,68 +2,195 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <title>Два Холма - магазин экзотических животных</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши клиенты - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
     <script src="js%20scripts/users.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<ul style="list-style-type: none; overflow: hidden;">
-    <li style="float: left;">
-        <img alt="Логотип магазина" src="pics/logo.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-    </li>
-    <li style="float: right;">
-        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
-            Два Холма
-        </h1>
-    </li>
-</ul>
-<hr/>
-<header>
-    <nav>
+<header class="site-header">
+    <div class="logo-container">
+        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <h1 class="site-title">Два Холма</h1>
+    </div>
+    <nav class="main-nav">
         <ul>
-            <li><a class="menu__link" href="index.html">Главная</a></li>
-            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-            <li><a class="menu__link" href="services.html">Услуги</a></li>
-            <li><a class="menu__link" href="about.html">О нас</a></li>
-            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            <li><a class="menu__link" href="form.html">Форма</a></li>
-            <li class="menu__item"><a class="menu__link" href="users.html">Животные</a></li>
+            <li><a class="menu__link" href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a class="menu__link" href="animals.html"><i class="fas fa-paw"></i> Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+            <li><a class="menu__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a class="menu__link" href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+            <li><a class="menu__link" href="form.html"><i class="fas fa-edit"></i> Добавить животное</a></li>
+            <li><a class="menu__link" href="users.html"><i class="fas fa-users"></i> Наши клиенты</a></li>
         </ul>
     </nav>
 </header>
-<main>
-    <section class="table-section">
-        <h2>Список Животных</h2>
-        <div class="table-slider">
-            <div id="userTable" class="grid-table">
-                <div class="header">Имя</div>
-                <div class="header">Почта хозяина</div>
-                <div class="header">Возраст</div>
-                <div class="header">Сайт</div>
-            </div>
-        </div>
 
-        <template id="user-row-template">
-            <div class="cell name"></div>
-            <div class="cell email"></div>
-            <div class="cell phone"></div>
-            <div class="cell site"></div>
-        </template>
+<div class="page-banner clients-banner">
+    <h2>Наши клиенты</h2>
+    <p>Люди, которые доверили нам заботу о своих экзотических питомцах</p>
+</div>
 
-        <div id="preloader" class="preloader">
-            <div class="loader"></div>
+<main class="main-section">
+    <section class="clients-intro">
+        <h3><i class="fas fa-heart"></i> Сообщество «Два Холма»</h3>
+        <p>Наш магазин гордится обширным сообществом любителей экзотических животных. Наши клиенты — это увлеченные люди, которые разделяют нашу любовь к редким видам и стремятся обеспечить своим питомцам наилучшие условия жизни.</p>
+        <p>На этой странице вы можете познакомиться с некоторыми из наших постоянных клиентов, узнать их истории и увидеть, каких экзотических питомцев они выбрали.</p>
+    </section>
+
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" id="clientSearch" placeholder="Поиск по имени или питомцу...">
+            <i class="fas fa-search search-icon"></i>
         </div>
     </section>
-    <div id="pagination" class="pagination">
-        <button id="prevBtn" disabled>Назад</button>
-        <button id="nextBtn">Вперед</button>
+
+    <div id="preloader" class="preloader">
+        <div class="loader"></div>
     </div>
+
+    <section class="clients-grid" id="clientsContainer">
+        <!-- Клиенты будут добавлены через JavaScript -->
+    </section>
+
+    <template id="client-card-template">
+        <div class="client-card">
+            <div class="client-avatar">
+                <div class="avatar-placeholder"></div>
+            </div>
+            <div class="client-info">
+                <h3 class="client-name"></h3>
+                <p class="client-location"><i class="fas fa-map-marker-alt"></i> <span class="location-text"></span></p>
+                <p class="client-contact"><i class="fas fa-envelope"></i> <span class="email-text"></span></p>
+                <p class="client-contact"><i class="fas fa-phone"></i> <span class="phone-text"></span></p>
+                <div class="client-pets">
+                    <h4><i class="fas fa-paw"></i> Питомцы:</h4>
+                    <div class="pet-tags"></div>
+                </div>
+                <div class="client-story">
+                    <p class="client-testimonial">«Магазин "Два Холма" — идеальное место для любителей экзотических животных. Я получил отличные рекомендации по уходу за моими питомцами!»</p>
+                </div>
+                <div class="client-website">
+                    <a href="#" target="_blank" class="website-link"><i class="fas fa-globe"></i> Личный сайт</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <div class="pagination-container">
+        <div class="pagination" id="pagination">
+            <button id="prevBtn" class="pagination-btn"><i class="fas fa-chevron-left"></i> Назад</button>
+            <div class="page-indicators" id="pageIndicators"></div>
+            <button id="nextBtn" class="pagination-btn">Вперед <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <section class="join-community">
+        <h3><i class="fas fa-users"></i> Станьте частью нашего сообщества</h3>
+        <p>Вы любите экзотических животных и хотите присоединиться к нашему сообществу? Заполните форму ниже, и мы свяжемся с вами!</p>
+
+        <form id="joinForm" class="community-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="joinName"><i class="fas fa-user"></i> Ваше имя</label>
+                    <input type="text" id="joinName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="joinEmail"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="joinEmail" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="joinPhone"><i class="fas fa-phone"></i> Телефон</label>
+                    <input type="tel" id="joinPhone">
+                </div>
+
+                <div class="form-group">
+                    <label for="joinLocation"><i class="fas fa-map-marker-alt"></i> Город</label>
+                    <input type="text" id="joinLocation">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="joinPets"><i class="fas fa-paw"></i> Ваши питомцы</label>
+                <input type="text" id="joinPets" placeholder="Например: Игуана, Попугай ара...">
+            </div>
+
+            <div class="form-group">
+                <label for="joinMessage"><i class="fas fa-comment"></i> Сообщение</label>
+                <textarea id="joinMessage" rows="4" placeholder="Расскажите немного о себе и своих питомцах..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button"><i class="fas fa-paper-plane"></i> Присоединиться</button>
+        </form>
+    </section>
+
+    <section class="community-benefits">
+        <h3><i class="fas fa-award"></i> Преимущества нашего сообщества</h3>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-comments"></i></div>
+                <div class="benefit-content">
+                    <h4>Обмен опытом</h4>
+                    <p>Общайтесь с другими владельцами экзотических животных, делитесь опытом и получайте советы.</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-percent"></i></div>
+                <div class="benefit-content">
+                    <h4>Система скидок</h4>
+                    <p>Члены сообщества получают персональные скидки на товары и услуги нашего магазина.</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="benefit-content">
+                    <h4>Мероприятия</h4>
+                    <p>Участвуйте в регулярных встречах, семинарах и выставках для любителей экзотических животных.</p>
+                </div>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-user-md"></i></div>
+                <div class="benefit-content">
+                    <h4>Ветеринарная поддержка</h4>
+                    <p>Получайте консультации от наших специалистов по уходу за вашими питомцами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
-</body>
+
 <footer>
-    <p>© 2024 Магазин "Два Холма". Все права защищены.</p>
-    <p id="performance-display"></p>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Магазин "Два Холма"</h3>
+            <p>Ваш проводник в мир экзотических животных</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ул. Экзотическая, 45, Москва</p>
+            <p><i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@dvaholma.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+        <p id="performance-display"></p>
+    </div>
 </footer>
-</html>

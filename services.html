@@ -2,75 +2,385 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Услуги</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<ul style="list-style-type: none; overflow: hidden;">
-    <li style="float: left;">
-        <img alt="Логотип магазина" src="pics/logo.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-    </li>
-    <li style="float: right;">
-        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
-            Два Холма
-        </h1>
-    </li>
-</ul>
-<hr/>
-<header>
-    <nav>
+<header class="site-header">
+    <div class="logo-container">
+        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <h1 class="site-title">Два Холма</h1>
+    </div>
+    <nav class="main-nav">
         <ul>
-            <li><a class="menu__link" href="index.html">Главная</a></li>
-            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-            <li><a class="menu__link" href="services.html">Услуги</a></li>
-            <li><a class="menu__link" href="about.html">О нас</a></li>
-            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            <li><a class="menu__link" href="form.html">Форма</a></li>
-            <li class="menu__item"><a class="menu__link" href="users.html">Животные</a></li>
+            <li><a class="menu__link" href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a class="menu__link" href="animals.html"><i class="fas fa-paw"></i> Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+            <li><a class="menu__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a class="menu__link" href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+            <li><a class="menu__link" href="form.html"><i class="fas fa-edit"></i> Добавить животное</a></li>
+            <li><a class="menu__link" href="users.html"><i class="fas fa-list"></i> Каталог животных</a></li>
         </ul>
     </nav>
 </header>
-<main class="main-section">
+
+<div class="page-banner services-banner">
     <h2>Наши услуги</h2>
-    <p>Мы предлагаем консультации по уходу за экзотическими животными, а также разнообразные аксессуары и корма для
-        питомцев.</p>
-    <section class="table-section" id="responsive-table">
-        <h2>Информация о товарах</h2>
+    <p>Полный спектр услуг для ваших экзотических питомцев</p>
+</div>
+
+<main class="main-section">
+    <section class="services-intro">
+        <h3>Комплексная забота о вашем питомце</h3>
+        <p>Магазин «Два Холма» предлагает не только продажу экзотических животных, но и полный спектр услуг для обеспечения здоровья и комфорта вашего питомца. Наши специалисты прошли обучение по работе с редкими видами животных и готовы предоставить профессиональную поддержку.</p>
+    </section>
+
+    <section class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-stethoscope"></i>
+            </div>
+            <h3>Ветеринарные услуги</h3>
+            <p>Специализированная ветеринарная помощь для редких и экзотических видов животных.</p>
+            <ul class="service-details">
+                <li>Профилактические осмотры</li>
+                <li>Вакцинация</li>
+                <li>Лечение заболеваний</li>
+                <li>Хирургические вмешательства</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 1500 ₽</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Обучение и дрессировка</h3>
+            <p>Индивидуальные и групповые занятия по обучению экзотических животных.</p>
+            <ul class="service-details">
+                <li>Базовые команды</li>
+                <li>Социализация</li>
+                <li>Коррекция поведения</li>
+                <li>Выступления и шоу</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 2500 ₽</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-cut"></i>
+            </div>
+            <h3>Груминг</h3>
+            <p>Профессиональный уход за внешностью вашего экзотического питомца.</p>
+            <ul class="service-details">
+                <li>Стрижка когтей и шерсти</li>
+                <li>Чистка перьев</li>
+                <li>Обработка панциря</li>
+                <li>СПА-процедуры</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 1800 ₽</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-hotel"></i>
+            </div>
+            <h3>Гостиница для животных</h3>
+            <p>Временное содержание экзотических питомцев в комфортных условиях.</p>
+            <ul class="service-details">
+                <li>Индивидуальные вольеры</li>
+                <li>Контроль температуры</li>
+                <li>Правильное питание</li>
+                <li>Видеонаблюдение</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 1000 ₽/сутки</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <h3>Транспортировка</h3>
+            <p>Безопасная перевозка экзотических животных по городу и стране.</p>
+            <ul class="service-details">
+                <li>Специализированный транспорт</li>
+                <li>Климат-контроль</li>
+                <li>Опытные сопровождающие</li>
+                <li>Оформление документов</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 3000 ₽</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <h3>Обустройство жилища</h3>
+            <p>Профессиональная помощь в создании комфортной среды для питомца.</p>
+            <ul class="service-details">
+                <li>Подбор террариума/вольера</li>
+                <li>Установка оборудования</li>
+                <li>Декорирование</li>
+                <li>Автоматизация ухода</li>
+            </ul>
+            <div class="price-info">
+                <span class="service-price">от 5000 ₽</span>
+                <button class="book-service-btn">Записаться</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-pricing">
+        <h3>Товары для экзотических животных</h3>
         <div class="table-scroll">
-            <table class="responsive-table">
+            <table class="responsive-table pricing-table">
                 <thead>
                 <tr>
                     <th>Товар</th>
                     <th>Цена</th>
                     <th>Описание</th>
+                    <th>Наличие</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td data-label="Товар">Верблюд</td>
-                    <td data-label="Цена">15000 $</td>
-                    <td data-label="Описание">Одногорбый краснокнижный верблюд.</td>
+                    <td data-label="Товар">Корм для рептилий премиум</td>
+                    <td data-label="Цена">1200 ₽</td>
+                    <td data-label="Описание">Специализированный корм с повышенным содержанием витаминов.</td>
+                    <td data-label="Наличие"><span class="in-stock">В наличии</span></td>
                 </tr>
                 <tr>
-                    <td data-label="Товар">Шимпанзе</td>
-                    <td data-label="Цена">1000 $</td>
-                    <td data-label="Описание">Молодой шимпанзе, обученный различным трюкам.</td>
+                    <td data-label="Товар">Террариум 100x50x50 см</td>
+                    <td data-label="Цена">15000 ₽</td>
+                    <td data-label="Описание">Стеклянный террариум с системой вентиляции и освещения.</td>
+                    <td data-label="Наличие"><span class="in-stock">В наличии</span></td>
                 </tr>
                 <tr>
-                    <td data-label="Товар">Верблюд</td>
-                    <td data-label="Цена">1500 $</td>
-                    <td data-label="Описание">Египетский двугорбый верблюд.</td>
+                    <td data-label="Товар">УФ-лампа для рептилий</td>
+                    <td data-label="Цена">3500 ₽</td>
+                    <td data-label="Описание">Специализированная лампа для обеспечения УФ-излучения.</td>
+                    <td data-label="Наличие"><span class="low-stock">Осталось мало</span></td>
+                </tr>
+                <tr>
+                    <td data-label="Товар">Декорации для террариума</td>
+                    <td data-label="Цена">от 500 ₽</td>
+                    <td data-label="Описание">Натуральные и искусственные элементы декора для создания естественной среды.</td>
+                    <td data-label="Наличие"><span class="in-stock">В наличии</span></td>
+                </tr>
+                <tr>
+                    <td data-label="Товар">Инкубатор для яиц рептилий</td>
+                    <td data-label="Цена">8500 ₽</td>
+                    <td data-label="Описание">Автоматический инкубатор с контролем температуры и влажности.</td>
+                    <td data-label="Наличие"><span class="out-stock">Под заказ</span></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </section>
+
+    <section class="service-faq">
+        <h3>Часто задаваемые вопросы</h3>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Какие документы нужны для покупки экзотического животного?
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>При покупке экзотического животного вам понадобится паспорт. Для некоторых редких видов, занесенных в Красную книгу, могут потребоваться дополнительные разрешения. Наши специалисты помогут вам оформить все необходимые документы.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Как часто нужно посещать ветеринара с экзотическим питомцем?
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Рекомендуется проходить профилактический осмотр не реже 1-2 раз в год. Для молодых животных или при адаптации к новым условиям могут потребоваться более частые визиты. Наши ветеринары специализируются на экзотических видах и всегда готовы помочь.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Предоставляете ли вы гарантию на животных?
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Да, мы предоставляем гарантию на здоровье животных в течение 14 дней с момента покупки. Если в этот период ветеринар обнаружит заболевание, которое было до покупки, мы вернем деньги или предложим замену.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    Можно ли оставить питомца в гостинице на время отпуска?
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Конечно! Наша гостиница принимает экзотических животных на любой срок. Мы обеспечиваем комфортные условия, соответствующие естественной среде обитания вашего питомца, включая правильное питание и температурный режим.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
+
+<div class="service-booking-modal" id="serviceBookingModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Запись на услугу</h3>
+        <form id="serviceBookingForm">
+            <div class="form-group">
+                <label for="clientName">Ваше имя</label>
+                <input type="text" id="clientName" required>
+            </div>
+            <div class="form-group">
+                <label for="clientPhone">Телефон</label>
+                <input type="tel" id="clientPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="clientEmail">Email</label>
+                <input type="email" id="clientEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="serviceType">Услуга</label>
+                <input type="text" id="serviceType" readonly>
+            </div>
+            <div class="form-group">
+                <label for="serviceDate">Дата</label>
+                <input type="date" id="serviceDate" required>
+            </div>
+            <div class="form-group">
+                <label for="serviceTime">Время</label>
+                <select id="serviceTime" required>
+                    <option value="">Выберите время</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="clientNotes">Дополнительная информация</label>
+                <textarea id="clientNotes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="submit-button">Записаться</button>
+        </form>
+    </div>
+</div>
+
 <footer>
-    <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
-    <p id="performance-display"></p>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Магазин "Два Холма"</h3>
+            <p>Ваш проводник в мир экзотических животных</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ул. Экзотическая, 45, Москва</p>
+            <p><i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@dvaholma.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+        <p id="performance-display"></p>
+    </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Аккордеон для FAQ
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const icon = header.querySelector('.accordion-icon');
+
+            header.addEventListener('click', () => {
+                // Закрываем все остальные элементы
+                accordionItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                        otherItem.querySelector('.accordion-icon').textContent = '+';
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Переключаем текущий элемент
+                item.classList.toggle('active');
+
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.textContent = '−';
+                } else {
+                    content.style.maxHeight = null;
+                    icon.textContent = '+';
+                }
+            });
+        });
+
+        // Модальное окно записи на услугу
+        const modal = document.getElementById('serviceBookingModal');
+        const bookButtons = document.querySelectorAll('.book-service-btn');
+        const closeModal = document.querySelector('.close-modal');
+        const serviceInput = document.getElementById('serviceType');
+
+        bookButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const serviceCard = button.closest('.service-card');
+                const serviceName = serviceCard.querySelector('h3').textContent;
+                serviceInput.value = serviceName;
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Обработка формы
+        const bookingForm = document.getElementById('serviceBookingForm');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Спасибо за запись! Мы свяжемся с вами для подтверждения.');
+            modal.style.display = 'none';
+            bookingForm.reset();
+        });
+    });
+</script>
 </body>
 </html>
