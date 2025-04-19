@@ -2,78 +2,327 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Два Холма - магазин экзотических животных</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление животного - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
-    <script src="js%20scripts/forms.js"></script>
+    <script src="js%20scripts/forms.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<ul style="list-style-type: none; overflow: hidden;">
-    <li style="float: left;">
-        <img alt="Логотип магазина" src="pics/logo.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-    </li>
-    <li style="float: right;">
-        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
-            Два Холма
-        </h1>
-    </li>
-</ul>
-<hr/>
-<header>
-    <nav>
+<header class="site-header">
+    <div class="logo-container">
+        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <h1 class="site-title">Два Холма</h1>
+    </div>
+    <nav class="main-nav">
         <ul>
-            <li><a class="menu__link" href="index.html">Главная</a></li>
-            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-            <li><a class="menu__link" href="services.html">Услуги</a></li>
-            <li><a class="menu__link" href="about.html">О нас</a></li>
-            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            <li><a class="menu__link" href="form.html">Форма</a></li>
-            <li class="menu__item"><a class="menu__link" href="users.html">Животные</a></li>
+            <li><a class="menu__link" href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a class="menu__link" href="animals.html"><i class="fas fa-paw"></i> Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+            <li><a class="menu__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a class="menu__link" href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+            <li><a class="menu__link" href="form.html"><i class="fas fa-edit"></i> Добавить животное</a></li>
+            <li><a class="menu__link" href="users.html"><i class="fas fa-users"></i> Наши клиенты</a></li>
         </ul>
     </nav>
 </header>
-<main>
-    <section class="form-section">
-        <h1 style="text-align: center">Добавьте информацию о животном</h1>
-        <form id="animalForm" class="styled-form">
-            <label for="name">Имя животного:</label>
-            <input type="text" id="name" required>
 
-            <label for="type">Вид животного:</label>
-            <input type="text" id="type" required>
+<div class="page-banner form-banner">
+    <h2>Управление базой данных животных</h2>
+    <p>Добавляйте, редактируйте и отслеживайте информацию о животных</p>
+</div>
 
-            <label for="age">Возраст:</label>
-            <input type="number" id="age" required min="0">
+<main class="main-section">
+    <!-- Уведомление будет добавлено с помощью JavaScript -->
+    <div id="notification" class="notification" style="display: none;"></div>
 
-            <button type="submit" class="submit-button">Добавить</button>
-        </form>
-    </section>
+    <div class="dashboard-container">
+        <section class="form-section">
+            <div class="section-header">
+                <h3><i class="fas fa-plus-circle"></i> <span id="formTitle">Добавление животного</span></h3>
+                <div class="status-indicator" id="formStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Режим добавления</span>
+                </div>
+            </div>
+
+            <form id="animalForm" class="styled-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-signature"></i> Имя животного</label>
+                        <input type="text" id="name" placeholder="Например: Гоша" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="type"><i class="fas fa-paw"></i> Вид животного</label>
+                        <select id="type" required>
+                            <option value="" disabled selected>Выберите вид</option>
+                            <optgroup label="Рептилии">
+                                <option value="Зеленая игуана">Зеленая игуана</option>
+                                <option value="Йеменский хамелеон">Йеменский хамелеон</option>
+                                <option value="Бородатая агама">Бородатая агама</option>
+                                <option value="Королевский питон">Королевский питон</option>
+                                <option value="Красноухая черепаха">Красноухая черепаха</option>
+                            </optgroup>
+                            <optgroup label="Птицы">
+                                <option value="Сине-жёлтый ара">Сине-жёлтый ара</option>
+                                <option value="Африканский серый попугай">Африканский серый попугай</option>
+                                <option value="Тукан Токо">Тукан Токо</option>
+                                <option value="Венценосный голубь">Венценосный голубь</option>
+                            </optgroup>
+                            <optgroup label="Млекопитающие">
+                                <option value="Капуцин">Капуцин</option>
+                                <option value="Одногорбый верблюд">Одногорбый верблюд</option>
+                                <option value="Сахарная сумчатая летяга">Сахарная сумчатая летяга</option>
+                            </optgroup>
+                            <optgroup label="Насекомые и паукообразные">
+                                <option value="Розовый птицеед">Розовый птицеед</option>
+                                <option value="Императорский скорпион">Императорский скорпион</option>
+                                <option value="Мадагаскарский таракан">Мадагаскарский таракан</option>
+                            </optgroup>
+                            <option value="other">Другой (укажите)</option>
+                        </select>
+                        <input type="text" id="customType" placeholder="Укажите вид животного" style="display: none; margin-top: 10px;">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age"><i class="fas fa-birthday-cake"></i> Возраст</label>
+                        <div class="input-with-suffix">
+                            <input type="number" id="age" min="0" step="0.1" placeholder="Возраст" required>
+                            <select id="ageUnit">
+                                <option value="years">лет</option>
+                                <option value="months">месяцев</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender"><i class="fas fa-venus-mars"></i> Пол</label>
+                        <select id="gender">
+                            <option value="unknown" selected>Неизвестно</option>
+                            <option value="male">Самец</option>
+                            <option value="female">Самка</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-align-left"></i> Описание</label>
+                    <textarea id="description" rows="3" placeholder="Особенности, характер, состояние здоровья и т.д."></textarea>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="submitButton" class="primary-button">
+                        <i class="fas fa-plus"></i> Добавить
+                    </button>
+                    <button type="button" id="cancelButton" class="secondary-button">
+                        <i class="fas fa-times"></i> Отменить
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="stats-section">
+            <h3><i class="fas fa-chart-pie"></i> Статистика</h3>
+            <div class="stats-cards">
+                <div class="stat-card" id="totalAnimals">
+                    <div class="stat-icon"><i class="fas fa-paw"></i></div>
+                    <div class="stat-info">
+                        <h4>Всего животных</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="reptileCount">
+                    <div class="stat-icon"><i class="fas fa-dragon"></i></div>
+                    <div class="stat-info">
+                        <h4>Рептилии</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="birdCount">
+                    <div class="stat-icon"><i class="fas fa-feather-alt"></i></div>
+                    <div class="stat-info">
+                        <h4>Птицы</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="mammalCount">
+                    <div class="stat-icon"><i class="fas fa-horse"></i></div>
+                    <div class="stat-info">
+                        <h4>Млекопитающие</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-placeholder" id="chartPlaceholder">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Диаграмма распределения по типам</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <section class="table-section">
-        <h2>Список Животных</h2>
-        <div class="table-slider">
-            <div id="animalTable" class="grid-table">
-                <div class="header">Имя</div>
-                <div class="header">Вид</div>
-                <div class="header">Возраст</div>
-                <div class="header">Действия</div>
+        <div class="table-header">
+            <h3><i class="fas fa-list"></i> Список животных</h3>
+            <div class="table-tools">
+                <div class="search-container">
+                    <input type="text" id="searchAnimal" placeholder="Поиск по имени или виду...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-dropdown">
+                    <button class="dropdown-button" id="filterButton">
+                        <i class="fas fa-filter"></i> Фильтр
+                    </button>
+                    <div class="dropdown-content" id="filterDropdown">
+                        <div class="filter-option">
+                            <input type="checkbox" id="filterReptiles" value="reptile" checked>
+                            <label for="filterReptiles">Рептилии</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filterBirds" value="bird" checked>
+                            <label for="filterBirds">Птицы</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filterMammals" value="mammal" checked>
+                            <label for="filterMammals">Млекопитающие</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filterInsects" value="insect" checked>
+                            <label for="filterInsects">Насекомые</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sort-dropdown">
+                    <button class="dropdown-button" id="sortButton">
+                        <i class="fas fa-sort"></i> Сортировка
+                    </button>
+                    <div class="dropdown-content" id="sortDropdown">
+                        <div class="sort-option">
+                            <input type="radio" name="sortOption" id="sortName" value="name" checked>
+                            <label for="sortName">По имени</label>
+                        </div>
+                        <div class="sort-option">
+                            <input type="radio" name="sortOption" id="sortType" value="type">
+                            <label for="sortType">По виду</label>
+                        </div>
+                        <div class="sort-option">
+                            <input type="radio" name="sortOption" id="sortAge" value="age">
+                            <label for="sortAge">По возрасту</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <template id="animal-row-template">
-            <div class="cell animal-name"></div>
-            <div class="cell animal-type"></div>
-            <div class="cell animal-age"></div>
-            <div class="cell">
-                <button class="edit-button">Изменить</button>
-                <button class="delete-button">Удалить</button>
+        <div id="animalTypes" class="type-tags"></div>
+
+        <div class="table-container">
+            <table id="animalTable" class="data-table">
+                <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Вид</th>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Описание</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Записи будут добавлены с помощью JavaScript -->
+                </tbody>
+            </table>
+
+            <!-- Сообщение при отсутствии животных -->
+            <div id="emptyTable" class="empty-table-message" style="display: none;">
+                <i class="fas fa-paw"></i>
+                <p>Список животных пуст. Добавьте первое животное с помощью формы выше.</p>
             </div>
-        </template>
+        </div>
     </section>
+
+    <section class="tips-section">
+        <h3><i class="fas fa-lightbulb"></i> Советы по добавлению животных</h3>
+        <div class="tips-container">
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fas fa-id-card"></i></div>
+                <div class="tip-content">
+                    <h4>Уникальные имена</h4>
+                    <p>Используйте уникальные имена для каждого животного, чтобы упростить их идентификацию в системе.</p>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="tip-content">
+                    <h4>Точная информация</h4>
+                    <p>Указывайте точный возраст и пол животного, это поможет при поиске и фильтрации.</p>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fas fa-pencil-alt"></i></div>
+                <div class="tip-content">
+                    <h4>Подробное описание</h4>
+                    <p>Добавляйте подробное описание с информацией о здоровье, особенностях и характере животного.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для подтверждения удаления -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4><i class="fas fa-exclamation-triangle"></i> Подтверждение удаления</h4>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить <span id="deleteAnimalName">это животное</span> из базы данных?</p>
+                <p class="warning-text">Это действие невозможно отменить.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelDelete" class="secondary-button">Отмена</button>
+                <button id="confirmDelete" class="danger-button">Удалить</button>
+            </div>
+        </div>
+    </div>
 </main>
-</body>
+
 <footer>
-    <p>© 2024 Магазин "Два Холма". Все права защищены.</p>
-    <p id="performance-display"></p>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Магазин "Два Холма"</h3>
+            <p>Ваш проводник в мир экзотических животных</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ул. Экзотическая, 45, Москва</p>
+            <p><i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@dvaholma.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+        <p id="performance-display"></p>
+    </div>
 </footer>
+</body>
 </html>

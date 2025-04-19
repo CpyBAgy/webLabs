@@ -2,62 +2,161 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Два Холма - магазин экзотических животных</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<ul style="list-style-type: none; overflow: hidden;">
-    <li style="float: left;">
-        <img alt="Логотип магазина" src="pics/logo.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-    </li>
-    <li style="float: right;">
-        <h1 style="font-size: 300%; font-family: cursive; position: absolute; right: 30px; top: -30px;">
-            Два Холма
-        </h1>
-    </li>
-</ul>
-<hr/>
-<header>
-    <nav>
+<header class="site-header">
+    <div class="logo-container">
+        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <h1 class="site-title">Два Холма</h1>
+    </div>
+    <nav class="main-nav">
         <ul>
-          <li><a class="menu__link" href="index.html">Главная</a></li>
-            <li><a class="menu__link" href="animals.html">Экзотические животные</a></li>
-            <li><a class="menu__link" href="services.html">Услуги</a></li>
-            <li><a class="menu__link" href="about.html">О нас</a></li>
-            <li><a class="menu__link" href="contacts.html">Контакты</a></li>
-            <li><a class="menu__link" href="form.html">Форма</a></li>
-            <li class="menu__item"><a class="menu__link" href="users.html">Животные</a></li>
+            <li><a class="menu__link" href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a class="menu__link" href="animals.html"><i class="fas fa-paw"></i> Экзотические животные</a></li>
+            <li><a class="menu__link" href="services.html"><i class="fas fa-concierge-bell"></i> Услуги</a></li>
+            <li><a class="menu__link" href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+            <li><a class="menu__link" href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+            <li><a class="menu__link" href="form.html"><i class="fas fa-edit"></i> Добавить животное</a></li>
+            <li><a class="menu__link" href="users.html"><i class="fas fa-list"></i> Каталог животных</a></li>
         </ul>
     </nav>
 </header>
+
+<div class="hero-section">
+    <div class="hero-content">
+        <h2>Добро пожаловать в мир экзотики!</h2>
+        <p>Магазин «Два Холма» — ваш проводник в удивительный мир редких и экзотических животных</p>
+        <a href="animals.html" class="cta-button">Познакомиться с нашими питомцами</a>
+    </div>
+</div>
+
 <main class="main-section">
-    <section id="about">
-        <h2 style="text-align: center">О магазине "Два Холма"</h2>
-        <img alt="Экзотическое животное" src="pics/exotic-animal.png"
-             style="border: 2px solid #ccc; box-shadow: 4px 4px 10px rgba(0,0,0,0.2);"/>
-        <p>Магазин <strong>экзотических животных "Два Холма"</strong> специализируется на продаже редких и уникальных
-            животных. Мы предлагаем широкий выбор питомцев: от экзотических рептилий до тропических птиц и даже редких
-            насекомых.</p>
-        <p>Наши специалисты помогут выбрать правильного питомца, обеспечить необходимое оборудование для ухода и
-            проконсультируют по вопросам содержания. Мы также проводим обучающие семинары и помогаем в организации
-            заботы о животных для дома и зоопарков.</p>
-        <p>Кроме того, мы предоставляем уникальные услуги по адаптации животных к новым условиям и обучению их базовым
-            навыкам. В "Два Холма" мы заботимся о каждом питомце, создавая для них комфортные условия.</p>
+    <section id="featured-animals" class="featured-section">
+        <h2>Наши уникальные питомцы</h2>
+        <div class="card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="pics/exotic-animal-reptile.png" alt="Редкие рептилии">
+                        <h3>Редкие рептилии</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Рептилии</h3>
+                        <p>Игуаны, хамелеоны, гекконы и другие уникальные рептилии со всего мира.</p>
+                        <a href="animals.html#reptiles" class="card-button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="pics/exotic-animal-bird.png" alt="Экзотические птицы">
+                        <h3>Экзотические птицы</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Птицы</h3>
+                        <p>Яркие попугаи, туканы и другие экзотические птицы, обученные общению с человеком.</p>
+                        <a href="animals.html#birds" class="card-button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="pics/exotic-animal-monkey.png" alt="Экзотические млекопитающие">
+                        <h3>Экзотические млекопитающие</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Млекопитающие</h3>
+                        <p>Редкие виды обезьян, сурикаты и другие необычные питомцы для вашего дома.</p>
+                        <a href="animals.html#mammals" class="card-button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    <hr/>
-    <section id="quote">
-        <h3 style="text-align: center">Добро пожаловать в "Два Холма" — мир экзотики и красоты!</h3>
-        <blockquote style="text-align: center;">"Природа хранит в себе бесконечное разнообразие. Позвольте себе стать
-            частью этого удивительного мира."
-        </blockquote>
-        <p class="styled-quote">«Каждое животное достойно заботы и любви». (Мудрость природы)</p>
+
+    <section id="about" class="about-section">
+        <h2>О магазине "Два Холма"</h2>
+        <div class="about-content">
+            <img alt="Экзотическое животное" src="pics/exotic-animal.png" class="about-image"/>
+            <div class="about-text">
+                <p>Магазин <strong>экзотических животных "Два Холма"</strong> специализируется на продаже редких и уникальных
+                    животных. Мы предлагаем широкий выбор питомцев: от экзотических рептилий до тропических птиц и даже редких
+                    насекомых.</p>
+                <p>Наши специалисты помогут выбрать правильного питомца, обеспечить необходимое оборудование для ухода и
+                    проконсультируют по вопросам содержания.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Сертифицированные питомцы</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <span>Ветеринарная поддержка</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Обучающие семинары</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <h2>Что говорят наши клиенты</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="quote"><i class="fas fa-quote-left"></i></div>
+                <p>Благодаря "Два Холма" я стал счастливым обладателем редкого вида хамелеона. Консультации по уходу оказались бесценными!</p>
+                <div class="client">
+                    <span class="name">Иван К.</span>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="quote"><i class="fas fa-quote-left"></i></div>
+                <p>Приобрели здесь экзотического попугая для дочери. Поражены уровнем сервиса и заботой о животных!</p>
+                <div class="client">
+                    <span class="name">Елена М.</span>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
+
 <footer>
-    <p>© 2024 Магазин "Два Холма". Все права защищены.</p>
-    <p id="performance-display"></p>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Магазин "Два Холма"</h3>
+            <p>Ваш проводник в мир экзотических животных</p>
+        </div>
+        <div class="footer-section">
+            <h3>Контакты</h3>
+            <p><i class="fas fa-map-marker-alt"></i> ул. Экзотическая, 45, Москва</p>
+            <p><i class="fas fa-phone"></i> 123-456-7890</p>
+            <p><i class="fas fa-envelope"></i> info@dvaholma.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Мы в соцсетях</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+        <p id="performance-display"></p>
+    </div>
 </footer>
 </body>
 </html>
