@@ -7,6 +7,7 @@
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
     <script src="js%20scripts/forms.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -159,6 +160,22 @@
                         <p class="stat-number">0</p>
                     </div>
                 </div>
+
+                <div class="stat-card" id="insectCount">
+                    <div class="stat-icon"><i class="fas fa-spider"></i></div>
+                    <div class="stat-info">
+                        <h4>Насекомые</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+
+                <div class="stat-card" id="otherCount">
+                    <div class="stat-icon"><i class="fas fa-question-circle"></i></div>
+                    <div class="stat-info">
+                        <h4>Другие</h4>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
             </div>
 
             <div class="chart-container">
@@ -265,7 +282,7 @@
                 <div class="tip-icon"><i class="fas fa-check-circle"></i></div>
                 <div class="tip-content">
                     <h4>Точная информация</h4>
-                    <p>Указывайте точный возраст и пол животного, это поможет при поиске и фильтрации.</p>
+                    <p>Указывайте точный возраст и пол животного, это поможет при поиске и подборе правильного ухода.</p>
                 </div>
             </div>
 
@@ -274,6 +291,14 @@
                 <div class="tip-content">
                     <h4>Подробное описание</h4>
                     <p>Добавляйте подробное описание с информацией о здоровье, особенностях и характере животного.</p>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-icon"><i class="fas fa-camera"></i></div>
+                <div class="tip-content">
+                    <h4>Качественные фото</h4>
+                    <p>Загружайте четкие фотографии животного в хорошем освещении для лучшего представления.</p>
                 </div>
             </div>
         </div>
@@ -324,5 +349,54 @@
         <p id="performance-display"></p>
     </div>
 </footer>
+
+<!-- JavaScript для создания диаграммы -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chartContainer = document.getElementById('chartPlaceholder');
+        if (chartContainer) {
+            const reptileCount = parseInt(document.querySelector('#reptileCount .stat-number').textContent) || 0;
+            const birdCount = parseInt(document.querySelector('#birdCount .stat-number').textContent) || 0;
+            const mammalCount = parseInt(document.querySelector('#mammalCount .stat-number').textContent) || 0;
+
+            chartContainer.innerHTML = '<canvas id="animalChart" width="400" height="250"></canvas>';
+
+            const ctx = document.getElementById('animalChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Рептилии', 'Птицы', 'Млекопитающие'],
+                    datasets: [{
+                        label: 'Количество животных',
+                        data: [reptileCount, birdCount, mammalCount],
+                        backgroundColor: [
+                            'rgba(76, 175, 80, 0.7)',
+                            'rgba(33, 150, 243, 0.7)',
+                            'rgba(255, 152, 0, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(76, 175, 80, 1)',
+                            'rgba(33, 150, 243, 1)',
+                            'rgba(255, 152, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Распределение по типам животных'
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

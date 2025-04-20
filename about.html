@@ -6,6 +6,8 @@
     <title>О нас - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -177,27 +179,27 @@
 
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="pics/exotic-animal-reptile.png" alt="Рептилия">
+                <img src="pics/agama.jpg" alt="Рептилия">
                 <div class="gallery-caption">Наша коллекция рептилий</div>
             </div>
             <div class="gallery-item">
-                <img src="pics/exotic-animal-bird.png" alt="Птица">
+                <img src="pics/ara-parrot.jpg" alt="Птица">
                 <div class="gallery-caption">Экзотические птицы</div>
             </div>
             <div class="gallery-item">
-                <img src="pics/exotic-animal-monkey.png" alt="Примат">
+                <img src="pics/kapucin.jpg" alt="Примат">
                 <div class="gallery-caption">Приматы в нашем магазине</div>
             </div>
             <div class="gallery-item">
-                <img src="pics/pic1.jpeg" alt="Интерьер магазина">
+                <img src="pics/interior.jpeg" alt="Интерьер магазина">
                 <div class="gallery-caption">Интерьер нашего магазина</div>
             </div>
             <div class="gallery-item">
-                <img src="pics/pic2.jpeg" alt="Семинар">
+                <img src="pics/seminar.png" alt="Семинар">
                 <div class="gallery-caption">Семинар для владельцев</div>
             </div>
             <div class="gallery-item">
-                <img src="pics/pic3.jpg" alt="Террариум">
+                <img src="pics/terrarium.jpeg" alt="Террариум">
                 <div class="gallery-caption">Современные террариумы</div>
             </div>
         </div>
@@ -387,14 +389,13 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
-        <p id="performance-display"></p>
+    <p>&copy; 2024 Магазин "Два Холма". Все права защищены.</p>
+    <p id="performance-display"></p>
     </div>
 </footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Скрипт для FAQ аккордеона
         const faqItems = document.querySelectorAll('.faq-item');
 
         faqItems.forEach(item => {
@@ -403,7 +404,6 @@
             const toggle = item.querySelector('.faq-toggle i');
 
             question.addEventListener('click', () => {
-                // Закрываем все другие ответы
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.querySelector('.faq-answer').style.maxHeight = null;
@@ -412,7 +412,6 @@
                     }
                 });
 
-                // Открываем/закрываем текущий ответ
                 item.classList.toggle('active');
 
                 if (item.classList.contains('active')) {
@@ -440,8 +439,35 @@
         };
 
         window.addEventListener('scroll', animateOnScroll);
-        // Вызываем один раз при загрузке
         animateOnScroll();
+    });
+</script>
+
+<!-- JavaScript для создания карты -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Находим все контейнеры для карт
+        const mapContainers = document.querySelectorAll('.map-placeholder');
+
+        if (mapContainers.length > 0) {
+            mapContainers.forEach((container) => {
+                // Устанавливаем ID для контейнера
+                const mapId = 'map-' + Math.random().toString(36).substr(2, 9);
+                container.innerHTML = `<div id="${mapId}" style="width: 100%; height: 100%; min-height: 300px;"></div>`;
+
+                // Создаем карту
+                const map = L.map(mapId).setView([55.751244, 37.618423], 14); // Координаты Москвы
+
+                // Добавляем слой OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Добавляем маркер магазина
+                const marker = L.marker([55.751244, 37.618423]).addTo(map);
+                marker.bindPopup('<strong>Магазин "Два Холма"</strong><br>ул. Экзотическая, 45, Москва').openPopup();
+            });
+        }
     });
 </script>
 </body>
