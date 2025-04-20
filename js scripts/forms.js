@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const reptileCountElement = document.querySelector('#reptileCount .stat-number');
     const birdCountElement = document.querySelector('#birdCount .stat-number');
     const mammalCountElement = document.querySelector('#mammalCount .stat-number');
+    const insectCountElement = document.querySelector('#insectCount .stat-number');
+    const otherCountElement = document.querySelector('#otherCount .stat-number');
 
     // Элементы модального окна
     const deleteModal = document.getElementById('deleteModal');
@@ -86,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'unknown';
     };
 
-    // Функция получения иконки для категории
     const getCategoryIcon = (category) => {
         switch (category) {
             case 'reptile': return '<i class="fas fa-dragon"></i>';
@@ -97,19 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Функция для показа уведомления
     const showNotification = (message, type = 'success') => {
         notificationElement.textContent = message;
         notificationElement.className = `notification ${type}`;
         notificationElement.style.display = 'block';
 
-        // Автоматически скрываем уведомление через 5 секунд
         setTimeout(() => {
             notificationElement.style.display = 'none';
         }, 5000);
     };
 
-    // Функция для обновления статистики
     const updateStatistics = () => {
         const totalAnimals = animals.length;
         const reptileCount = animals.filter(animal =>
@@ -118,42 +116,87 @@ document.addEventListener('DOMContentLoaded', () => {
             getAnimalCategory(animal.type) === 'bird').length;
         const mammalCount = animals.filter(animal =>
             getAnimalCategory(animal.type) === 'mammal').length;
+        const insectCount = animals.filter(animal =>
+            getAnimalCategory(animal.type) === 'insect').length;
+        const otherCount = animals.filter(animal =>
+            getAnimalCategory(animal.type) === 'unknown').length;
 
         totalAnimalsElement.textContent = totalAnimals;
         reptileCountElement.textContent = reptileCount;
         birdCountElement.textContent = birdCount;
         mammalCountElement.textContent = mammalCount;
+        insectCountElement.textContent = insectCount;
+        otherCountElement.textContent = otherCount;
+
+        const chartPlaceholder = document.getElementById('chartPlaceholder');
+        if (chartPlaceholder) {
+            chartPlaceholder.innerHTML = '<canvas id="typeChart" width="100%" height="100%"></canvas>';
+
+            const ctx = document.getElementById('typeChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Рептилии', 'Птицы', 'Млекопитающие', 'Насекомые', 'Другие'],
+                    datasets: [{
+                        data: [reptileCount, birdCount, mammalCount, insectCount, otherCount],
+                        backgroundColor: [
+                            'rgba(76, 175, 80, 0.7)',  // зеленый для рептилий
+                            'rgba(33, 150, 243, 0.7)', // синий для птиц
+                            'rgba(255, 152, 0, 0.7)',  // оранжевый для млекопитающих
+                            'rgba(156, 39, 176, 0.7)',  // фиолетовый для насекомых
+                            'rgba(213,189,77,0.7)' // желтый для других
+                        ],
+                        borderColor: [
+                            'rgba(76, 175, 80, 1)',
+                            'rgba(33, 150, 243, 1)',
+                            'rgba(255, 152, 0, 1)',
+                            'rgba(156, 39, 176, 1)',
+                            'rgba(213,189,77,0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Распределение по типам животных',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+        }
     };
 
-    // Функция для создания тегов типов животных
     const createTypeTags = () => {
-        // Очищаем контейнер
         typeTagsContainer.innerHTML = '';
 
-        // Получаем уникальные типы животных
         const uniqueTypes = [...new Set(animals.map(animal => animal.type))];
 
-        // Создаем теги для каждого типа
         uniqueTypes.forEach(type => {
             const category = getAnimalCategory(type);
             const tag = document.createElement('div');
             tag.className = `type-tag ${category}`;
             tag.innerHTML = `${getCategoryIcon(category)} ${type}`;
 
-            // Добавляем обработчик события для фильтрации
             tag.addEventListener('click', () => {
-                // Если уже активен этот тег - сбрасываем фильтр
                 if (tag.classList.contains('active')) {
                     tag.classList.remove('active');
                     searchInput.value = '';
                     applyFilters();
                 } else {
-                    // Удаляем активный класс у всех тегов
                     document.querySelectorAll('.type-tag.active').forEach(activeTag => {
                         activeTag.classList.remove('active');
                     });
 
-                    // Активируем текущий тег
                     tag.classList.add('active');
                     searchInput.value = type;
                     applyFilters();
@@ -164,28 +207,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Функция для отображения списка животных с фильтрацией и сортировкой
     const renderAnimals = () => {
-        // Очищаем таблицу
         tableBody.innerHTML = '';
 
-        // Если список пуст, показываем сообщение
         if (filteredAnimals.length === 0) {
             emptyTableMessage.style.display = 'block';
             animalTable.style.display = 'none';
             return;
         }
 
-        // Иначе показываем таблицу
         emptyTableMessage.style.display = 'none';
         animalTable.style.display = 'table';
 
-        // Добавляем строки для каждого животного
         filteredAnimals.forEach((animal, index) => {
             const row = document.createElement('tr');
             const category = getAnimalCategory(animal.type);
 
-            // Преобразуем возраст в строку
             let ageDisplay = animal.age;
             if (animal.ageUnit && animal.ageUnit === 'months') {
                 ageDisplay = `${animal.age} мес.`;
@@ -193,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ageDisplay = `${animal.age} лет`;
             }
 
-            // Преобразуем пол в строку
             let genderDisplay = 'Неизвестно';
             if (animal.gender === 'male') {
                 genderDisplay = 'Самец';
@@ -201,7 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 genderDisplay = 'Самка';
             }
 
-            // Генерируем HTML для строки
             row.innerHTML = `
                 <td>${animal.name}</td>
                 <td class="animal-type ${category}">
@@ -220,7 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             `;
 
-            // Добавляем обработчики событий для кнопок
             const editButton = row.querySelector('.edit-button');
             editButton.addEventListener('click', () => {
                 startEditingAnimal(index);
@@ -235,34 +269,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Функция для применения фильтров и сортировки
     const applyFilters = () => {
-        // Получаем значение поиска
         const searchQuery = searchInput.value.toLowerCase();
 
-        // Получаем активные фильтры категорий
         const activeFilters = Array.from(filterButtons)
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.value);
 
-        // Фильтруем животных
         filteredAnimals = animals.filter(animal => {
-            // Проверка на соответствие поисковому запросу
             const matchesSearch = animal.name.toLowerCase().includes(searchQuery) ||
                 animal.type.toLowerCase().includes(searchQuery) ||
                 (animal.description && animal.description.toLowerCase().includes(searchQuery));
 
-            // Проверка на соответствие категории
             const category = getAnimalCategory(animal.type);
             const matchesCategory = activeFilters.includes(category) || category === 'unknown';
 
             return matchesSearch && matchesCategory;
         });
 
-        // Получаем выбранный вариант сортировки
         const sortOption = Array.from(sortOptions).find(radio => radio.checked).value;
 
-        // Сортируем животных
         filteredAnimals.sort((a, b) => {
             switch (sortOption) {
                 case 'name':
@@ -278,19 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Обновляем таблицу
         renderAnimals();
     };
 
-    // Функция для начала редактирования животного
     const startEditingAnimal = (index) => {
         const animal = animals[index];
 
-        // Заполняем форму данными животного
         document.getElementById('name').value = animal.name;
 
-        // Если тип животного есть в списке, выбираем его
-        // Иначе выбираем "Другой" и заполняем поле пользовательского типа
         if (Array.from(typeSelect.options).some(option => option.value === animal.type)) {
             typeSelect.value = animal.type;
             customTypeInput.style.display = 'none';
@@ -305,18 +326,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('gender').value = animal.gender || 'unknown';
         document.getElementById('description').value = animal.description || '';
 
-        // Переключаем режим формы на редактирование
         currentEditIndex = index;
         formTitle.textContent = 'Редактирование животного';
         submitButton.innerHTML = '<i class="fas fa-save"></i> Сохранить';
         statusDot.style.backgroundColor = '#ff9800';
         statusText.textContent = 'Режим редактирования';
 
-        // Прокручиваем к форме
         form.scrollIntoView({ behavior: 'smooth' });
     };
 
-    // Функция для сброса формы
     const resetForm = () => {
         form.reset();
         customTypeInput.style.display = 'none';
@@ -327,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
         statusText.textContent = 'Режим добавления';
     };
 
-    // Функция для показа модального окна подтверждения удаления
     const showDeleteConfirmation = (index) => {
         animalToDelete = index;
         const animal = animals[index];
@@ -335,27 +352,22 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteModal.style.display = 'flex';
     };
 
-    // Функция для скрытия модального окна
     const hideDeleteModal = () => {
         deleteModal.style.display = 'none';
         animalToDelete = null;
     };
 
-    // Функция для удаления животного
     const deleteAnimal = (index) => {
         const animalName = animals[index].name;
         animals.splice(index, 1);
         localStorage.setItem('animals', JSON.stringify(animals));
 
-        // Если мы редактировали это животное, сбрасываем форму
         if (currentEditIndex === index) {
             resetForm();
         } else if (currentEditIndex !== null && currentEditIndex > index) {
-            // Если индекс редактируемого животного больше удаленного, корректируем его
             currentEditIndex--;
         }
 
-        // Обновляем отображение
         filteredAnimals = [...animals];
         applyFilters();
         createTypeTags();
@@ -364,9 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showNotification(`Животное "${animalName}" успешно удалено`, 'success');
     };
 
-    // Инициализация приложения
     const initApp = () => {
-        // Обработка изменения типа животного
         typeSelect.addEventListener('change', () => {
             if (typeSelect.value === 'other') {
                 customTypeInput.style.display = 'block';
@@ -376,14 +386,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Обработка отправки формы
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Получаем данные из формы
             const name = document.getElementById('name').value.trim();
 
-            // Определяем тип животного (из списка или пользовательский)
             let type = typeSelect.value;
             if (type === 'other') {
                 type = customTypeInput.value.trim();
@@ -398,53 +405,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const gender = document.getElementById('gender').value;
             const description = document.getElementById('description').value.trim();
 
-            // Проверяем валидность данных
             if (name && type && !isNaN(age) && age >= 0) {
                 const animalData = { name, type, age, ageUnit, gender, description };
 
                 if (currentEditIndex !== null) {
-                    // Режим редактирования
                     animals[currentEditIndex] = animalData;
                     showNotification(`Животное "${name}" успешно обновлено`, 'success');
                 } else {
-                    // Режим добавления
                     animals.push(animalData);
                     showNotification(`Животное "${name}" успешно добавлено`, 'success');
                 }
 
-                // Сохраняем в localStorage
                 localStorage.setItem('animals', JSON.stringify(animals));
 
-                // Обновляем отображение
                 filteredAnimals = [...animals];
                 applyFilters();
                 createTypeTags();
                 updateStatistics();
 
-                // Сбрасываем форму
                 resetForm();
             } else {
                 showNotification('Пожалуйста, заполните все обязательные поля корректно', 'error');
             }
         });
 
-        // Обработка кнопки отмены
         cancelButton.addEventListener('click', resetForm);
 
-        // Обработка поиска
         searchInput.addEventListener('input', applyFilters);
 
-        // Обработка изменения фильтров
         filterButtons.forEach(checkbox => {
             checkbox.addEventListener('change', applyFilters);
         });
 
-        // Обработка изменения сортировки
         sortOptions.forEach(radio => {
             radio.addEventListener('change', applyFilters);
         });
 
-        // Обработка подтверждения удаления
         confirmDeleteButton.addEventListener('click', () => {
             if (animalToDelete !== null) {
                 deleteAnimal(animalToDelete);
@@ -452,23 +448,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Обработка отмены удаления
         cancelDeleteButton.addEventListener('click', hideDeleteModal);
         closeModalButton.addEventListener('click', hideDeleteModal);
 
-        // Закрытие модального окна при клике вне его
         window.addEventListener('click', (e) => {
             if (e.target === deleteModal) {
                 hideDeleteModal();
             }
         });
 
-        // Инициализируем отображение
         createTypeTags();
         updateStatistics();
         applyFilters();
     };
 
-    // Запускаем инициализацию приложения
     initApp();
 });

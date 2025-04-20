@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Настройка карусели
     $('.carousel').slick({
         infinite: true,
         slidesToShow: 3,
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     });
 
-    // Фильтрация животных
     const filterButtons = document.querySelectorAll('.filter-btn');
     const animalCards = document.querySelectorAll('.animal-card');
 
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Модальное окно заявки
     const modal = document.getElementById('inquiryModal');
     const inquiryButtons = document.querySelectorAll('.inquiry-btn');
     const closeModal = document.querySelector('.close-modal');
@@ -54,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     inquiryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Получаем название животного из родительской карточки
             const animalCard = button.closest('.animal-card');
             const animalName = animalCard.querySelector('h4').textContent;
             animalInput.value = animalName;
@@ -72,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Обработка формы заявки
     const inquiryForm = document.getElementById('inquiryForm');
 
     inquiryForm.addEventListener('submit', (e) => {
@@ -96,6 +91,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
+
+    function handleAnchor() {
+        const hash = window.location.hash;
+        if (hash) {
+            const filter = hash.substring(1);
+
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.classList.remove('active');
+
+                if (button.getAttribute('data-filter') === filter) {
+                    button.classList.add('active');
+
+                    const animalCards = document.querySelectorAll('.animal-card');
+                    animalCards.forEach(card => {
+                        if (filter === 'all' || card.classList.contains(filter)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    const animalCatalog = document.getElementById('animal-catalog');
+                    if (animalCatalog) {
+                        setTimeout(() => {
+                            animalCatalog.scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    }
+                }
+            });
+        }
+    }
+
+    handleAnchor();
 
     window.addEventListener('scroll', animateOnScroll);
     animateOnScroll();

@@ -6,12 +6,14 @@
     <title>Контакты - Два Холма</title>
     <link href="style.css" rel="stylesheet"/>
     <script src="js%20scripts/main.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header class="site-header">
     <div class="logo-container">
-        <img alt="Логотип магазина" src="pics/logo.png" class="logo"/>
+        <img alt="Логотип магазина" src="pics/memes/assasini-cappuccini.jpeg" class="logo"/>
         <h1 class="site-title">Два Холма</h1>
     </div>
     <nav class="main-nav">
@@ -254,27 +256,22 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Форма обратной связи
         const contactForm = document.getElementById('contactForm');
 
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                // Показываем уведомление об успешной отправке
                 const notification = document.createElement('div');
                 notification.className = 'notification success';
                 notification.innerHTML = '<i class="fas fa-check-circle"></i> Спасибо! Ваше сообщение успешно отправлено. Мы свяжемся с вами в ближайшее время.';
 
                 contactForm.reset();
 
-                // Вставляем уведомление перед формой
                 contactForm.parentNode.insertBefore(notification, contactForm);
 
-                // Прокручиваем к уведомлению
                 notification.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Убираем уведомление через 5 секунд
                 setTimeout(() => {
                     notification.style.opacity = '0';
                     setTimeout(() => {
@@ -284,7 +281,6 @@
             });
         }
 
-        // Скрипт для FAQ аккордеона
         const faqItems = document.querySelectorAll('.faq-item');
 
         faqItems.forEach(item => {
@@ -293,7 +289,6 @@
             const toggle = item.querySelector('.faq-toggle i');
 
             question.addEventListener('click', () => {
-                // Закрываем все другие ответы
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.querySelector('.faq-answer').style.maxHeight = null;
@@ -302,7 +297,6 @@
                     }
                 });
 
-                // Открываем/закрываем текущий ответ
                 item.classList.toggle('active');
 
                 if (item.classList.contains('active')) {
@@ -314,6 +308,34 @@
                 }
             });
         });
+    });
+</script>
+
+<!-- JavaScript для создания карты -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Находим все контейнеры для карт
+        const mapContainers = document.querySelectorAll('.map-placeholder');
+
+        if (mapContainers.length > 0) {
+            mapContainers.forEach((container) => {
+                // Устанавливаем ID для контейнера
+                const mapId = 'map-' + Math.random().toString(36).substr(2, 9);
+                container.innerHTML = `<div id="${mapId}" style="width: 100%; height: 100%; min-height: 300px;"></div>`;
+
+                // Создаем карту
+                const map = L.map(mapId).setView([55.751244, 37.618423], 14); // Координаты Москвы
+
+                // Добавляем слой OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Добавляем маркер магазина
+                const marker = L.marker([55.751244, 37.618423]).addTo(map);
+                marker.bindPopup('<strong>Магазин "Два Холма"</strong><br>ул. Экзотическая, 45, Москва').openPopup();
+            });
+        }
     });
 </script>
 </body>
