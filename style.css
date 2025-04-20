@@ -153,7 +153,7 @@ a {
 
 /* Баннер страницы */
 .page-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/il-cacto-hippopotamo.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -176,7 +176,7 @@ a {
 }
 
 .services-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal-verblyud.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/lirili-larila.webp');
 }
 
 /* Главная секция */
@@ -199,7 +199,7 @@ a {
 
 /* Секция героя */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('pics/exotic-animal.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('pics/memes/golubiro-shpioniro.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -1639,7 +1639,7 @@ footer {
 
 /* Баннер страницы клиентов */
 .clients-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal-monkey.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/octopusini-blueberriny.jpeg');
     background-size: cover;
     background-position: center;
 }
@@ -2218,7 +2218,7 @@ footer {
 
 /* Баннер страницы */
 .about-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/penguinator-termoregulator.jpeg');
     background-size: cover;
     background-position: center;
 }
@@ -3072,7 +3072,7 @@ footer {
 
 /* Баннер контактов */
 .contacts-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal-bird.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/trippi-troppi.webp');
     background-size: cover;
     background-position: center;
 }
@@ -3507,7 +3507,7 @@ footer {
 
 /* Баннер формы */
 .form-banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/exotic-animal-reptile.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('pics/memes/tung-tung-tung-sahur.jpg');
     background-size: cover;
     background-position: center;
 }
