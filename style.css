@@ -1533,96 +1533,105 @@ footer {
 
 /* Секция советов */
 .tips-section {
-    background-color: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #e8f5e9;
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    margin: 50px auto;
+    position: relative;
+    z-index: 2;
+    border: 2px solid #2e7d32;
+    max-width: 1200px;
 }
 
 .tips-section h3 {
-    text-align: center;
-    margin-bottom: 30px;
     color: #2e7d32;
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.tips-grid {
+.tips-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
-.tip-item {
+.tip-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
     display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f5f5f5;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    border: 1px solid #e0f2e1;
+    height: 100%;
 }
 
-.tip-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.tip-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    border-color: #81c784;
 }
 
 .tip-icon {
+    width: 80px;
+    height: 80px;
     background-color: #e8f5e9;
     color: #2e7d32;
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
+    align-items: center;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    border: 2px solid #c8e6c9;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover .tip-icon {
+    background-color: #c8e6c9;
+    transform: scale(1.05);
+}
+
+.tip-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .tip-content h4 {
-    margin-bottom: 8px;
     color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
 }
 
-/* Медиа запросы */
+.tip-content p {
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
 @media (max-width: 768px) {
-    .table-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .search-container {
-        width: 100%;
-    }
-
-    .table-header-row, .table-row {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .header-cell:nth-child(3), .cell:nth-child(3) {
-        display: none;
-    }
-
-    .action-buttons {
-        flex-direction: column;
+    .tips-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
 
 @media (max-width: 480px) {
-    .tips-grid {
+    .tips-container {
         grid-template-columns: 1fr;
     }
-
-    .table-header-row, .table-row {
-        grid-template-columns: 1fr;
-    }
-
-    .header-cell:nth-child(2), .cell:nth-child(2) {
-        display: none;
+    
+    .tips-section {
+        padding: 30px 20px;
     }
 }
 
@@ -4111,6 +4120,9 @@ footer {
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
 }
 
 .tips-section h3 {
@@ -4296,4 +4308,127 @@ footer {
     .tips-container {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* Добавляем стили для кнопки авторизации */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Изменено для распределения пространства */
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.site-title {
+    margin-right: auto; /* Чтобы заголовок располагался после логотипа */
+}
+
+.auth-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-status {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.auth-button {
+    background-color: #fff;
+    color: #2e7d32;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        margin-top: 10px;
+        margin-left: auto;
+    }
+
+    .auth-status {
+        display: none; /* Скрываем статус на мобильном */
+    }
+}
+
+/* Медиа запросы для таблицы */
+@media (max-width: 768px) {
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .table-header-row, .table-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .header-cell:nth-child(3), .cell:nth-child(3) {
+        display: none;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-header-row, .table-row {
+        grid-template-columns: 1fr;
+    }
+
+    .header-cell:nth-child(2), .cell:nth-child(2) {
+        display: none;
+    }
+}
+
+/* Стили для фильтров в таблице животных */
+.filter-option.active-filter {
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.filter-option.active-filter label {
+    color: #2e7d32;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.filter-action-btn {
+    flex: 1;
+    padding: 6px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-action-btn.select-all {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.filter-action-btn.clear-all {
+    background-color: #f5f5f5;
+    color: #555;
 }

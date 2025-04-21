@@ -207,6 +207,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Функция для установки или сброса всех фильтров
+    const setAllFilters = (checked) => {
+        filterButtons.forEach(checkbox => {
+            checkbox.checked = checked;
+            const filterLabel = checkbox.closest('.filter-option');
+            if (checked) {
+                filterLabel.classList.add('active-filter');
+            } else {
+                filterLabel.classList.remove('active-filter');
+            }
+        });
+        applyFilters();
+    };
+
     const renderAnimals = () => {
         tableBody.innerHTML = '';
 
@@ -282,7 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 (animal.description && animal.description.toLowerCase().includes(searchQuery));
 
             const category = getAnimalCategory(animal.type);
-            const matchesCategory = activeFilters.includes(category) || category === 'unknown';
+            
+            const matchesCategory = activeFilters.length === 0 || activeFilters.includes(category);
 
             return matchesSearch && matchesCategory;
         });
@@ -434,7 +449,16 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('input', applyFilters);
 
         filterButtons.forEach(checkbox => {
-            checkbox.addEventListener('change', applyFilters);
+            checkbox.addEventListener('change', () => {
+                const filterLabel = checkbox.closest('.filter-option');
+                if (checkbox.checked) {
+                    filterLabel.classList.add('active-filter');
+                } else {
+                    filterLabel.classList.remove('active-filter');
+                }
+                
+                applyFilters();
+            });
         });
 
         sortOptions.forEach(radio => {
@@ -457,6 +481,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Добавляем обработчики для кнопок фильтров в HTML
+        const selectAllFiltersBtn = document.getElementById('selectAllFilters');
+        const clearAllFiltersBtn = document.getElementById('clearAllFilters');
+        
+        if (selectAllFiltersBtn) {
+            selectAllFiltersBtn.addEventListener('click', () => setAllFilters(true));
+        }
+        
+        if (clearAllFiltersBtn) {
+            clearAllFiltersBtn.addEventListener('click', () => setAllFilters(false));
+        }
+
+        // Инициализируем фильтры как включенные по умолчанию
+        setAllFilters(true);
+        
         createTypeTags();
         updateStatistics();
         applyFilters();

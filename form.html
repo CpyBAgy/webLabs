@@ -15,6 +15,10 @@
     <div class="logo-container">
         <img alt="Логотип магазина" src="pics/memes/assasini-cappuccini.jpeg" class="logo"/>
         <h1 class="site-title">Два Холма</h1>
+        <div class="auth-container">
+            <span class="auth-status">Вы вошли как Иван</span>
+            <button class="auth-button">Выйти</button>
+        </div>
     </div>
     <nav class="main-nav">
         <ul>
@@ -216,6 +220,11 @@
                             <input type="checkbox" id="filterInsects" value="insect" checked>
                             <label for="filterInsects">Насекомые</label>
                         </div>
+                        <!-- Кнопки управления фильтрами -->
+                        <div class="filter-actions">
+                            <button id="selectAllFilters" class="filter-action-btn select-all">Выбрать все</button>
+                            <button id="clearAllFilters" class="filter-action-btn clear-all">Снять все</button>
+                        </div>
                     </div>
                 </div>
                 <div class="sort-dropdown">
@@ -267,42 +276,79 @@
         </div>
     </section>
 
-    <section class="tips-section">
-        <h3><i class="fas fa-lightbulb"></i> Советы по добавлению животных</h3>
-        <div class="tips-container">
-            <div class="tip-card">
-                <div class="tip-icon"><i class="fas fa-id-card"></i></div>
-                <div class="tip-content">
-                    <h4>Уникальные имена</h4>
-                    <p>Используйте уникальные имена для каждого животного, чтобы упростить их идентификацию в системе.</p>
+    <!-- Заменяем на инлайн-стили -->
+    <section style="background-color: #e8f5e9; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 40px auto; max-width: 1200px; border: 1px solid #c8e6c9;">
+        <h3 style="text-align: center; color: #2e7d32; margin-bottom: 25px; font-size: 24px;"><i class="fas fa-lightbulb"></i> Советы по добавлению животных</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+            <!-- Карточка 1 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-id-card" style="font-size: 24px; color: #2e7d32;"></i>
+                </div>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Уникальные имена</h4>
+                    <p style="color: #666; line-height: 1.5;">Используйте уникальные имена для каждого животного, чтобы упростить их идентификацию в системе.</p>
+                </div>
+            </div>
+            
+            <!-- Карточка 2 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-check-circle" style="font-size: 24px; color: #2e7d32;"></i>
+                </div>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Точная информация</h4>
+                    <p style="color: #666; line-height: 1.5;">Указывайте точный возраст и пол животного, это поможет при поиске и подборе правильного ухода.</p>
+                </div>
+            </div>
+            
+            <!-- Карточка 3 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-pencil-alt" style="font-size: 24px; color: #2e7d32;"></i>
+                </div>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Подробное описание</h4>
+                    <p style="color: #666; line-height: 1.5;">Добавляйте подробное описание с информацией о здоровье, особенностях и характере животного.</p>
+                </div>
+            </div>
+            
+            <!-- Карточка 4 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-camera" style="font-size: 24px; color: #2e7d32;"></i>
+                </div>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Качественные фото</h4>
+                    <p style="color: #666; line-height: 1.5;">Загружайте четкие фотографии животного в хорошем освещении для лучшего представления.</p>
                 </div>
             </div>
 
-            <div class="tip-card">
-                <div class="tip-icon"><i class="fas fa-check-circle"></i></div>
-                <div class="tip-content">
-                    <h4>Точная информация</h4>
-                    <p>Указывайте точный возраст и пол животного, это поможет при поиске и подборе правильного ухода.</p>
+            <!-- Карточка 5 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-file-medical-alt" style="font-size: 24px; color: #2e7d32;"></i>
+                </div>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Медицинская информация</h4>
+                    <p style="color: #666; line-height: 1.5;">Укажите информацию о вакцинациях, хронических заболеваниях и особенностях здоровья вашего питомца.</p>
                 </div>
             </div>
 
-            <div class="tip-card">
-                <div class="tip-icon"><i class="fas fa-pencil-alt"></i></div>
-                <div class="tip-content">
-                    <h4>Подробное описание</h4>
-                    <p>Добавляйте подробное описание с информацией о здоровье, особенностях и характере животного.</p>
+            <!-- Карточка 6 -->
+            <div style="background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; border: 1px solid #e0e0e0;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background-color: #e8f5e9; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; transition: all 0.3s ease;">
+                    <i class="fas fa-utensils" style="font-size: 24px; color: #2e7d32;"></i>
                 </div>
-            </div>
-
-            <div class="tip-card">
-                <div class="tip-icon"><i class="fas fa-camera"></i></div>
-                <div class="tip-content">
-                    <h4>Качественные фото</h4>
-                    <p>Загружайте четкие фотографии животного в хорошем освещении для лучшего представления.</p>
+                <div>
+                    <h4 style="color: #333; font-size: 18px; margin-bottom: 10px;">Предпочтения в питании</h4>
+                    <p style="color: #666; line-height: 1.5;">Опишите предпочтения вашего питомца в еде, режим питания и любимые лакомства для более точного ухода.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div style="height: 30px; clear: both;"></div>
 
     <!-- Модальное окно для подтверждения удаления -->
     <div id="deleteModal" class="modal">
@@ -398,5 +444,6 @@
         }
     });
 </script>
+<script src="js%20scripts/auth.js" defer></script>
 </body>
 </html>
